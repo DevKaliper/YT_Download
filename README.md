@@ -1,12 +1,10 @@
 
 
-## For the moment the project is in development 
+## Welcome. This is the Developtment Branch of the project
 
 ```javascript
-if("You want to see the progress"){
-    console.log("You can see the progress in the branch develop")
-}else{
-    console.log("Wait for the release :)")
+while (true){
+    console.log("Development mode is on") 😎👨‍💻
 }
 ```
 
