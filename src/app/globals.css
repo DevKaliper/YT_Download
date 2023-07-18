@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+*::selection {
+  background-color: #7c1fbf;
+  color: #fff;
+}
