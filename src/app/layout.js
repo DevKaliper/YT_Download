@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
 
   
   return (
-    <html lang="en">
+    <html lang="es">
       
       <body className={`${inter.className} bg-[#050211]`} >
         <Ball />
