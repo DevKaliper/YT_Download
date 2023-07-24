@@ -24,7 +24,7 @@ export const Ball = () => {
 
   return (
     <div
-      className=" bg-gradient-to-r from-purple-600 to-purple-900 pointer-events-none absolute hidden h-80 w-80 translate-x-[-50%] translate-y-[-50%] transform rounded-full  blur-3xl md:block -z-50 opacity-20"
+      className=" bg-gradient-to-r from-purple-600 to-purple-900 pointer-events-none absolute hidden h-80 w-80 translate-x-[-50%] translate-y-[-50%] transform rounded-full  blur-3xl md:block -z-[9999] opacity-20"
       ref={ball}
     />
   );
