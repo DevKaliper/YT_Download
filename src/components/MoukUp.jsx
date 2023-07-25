@@ -1,6 +1,16 @@
-import React from "react";
+import { useState } from "react";
+import service from "../services/fetchVideo";
+
 
 const MoukUp = () => {
+  const [url, setUrl] = useState("");
+  const handleChange = (e, setSomething) => {
+    setSomething(e.target.value);
+    
+  }
+  const handleSubmit = (url) => {
+    service.fetchVideo(url).then(res => console.log(res.videoDetails.title))
+  }
   return (
     <div className="mockup-code relative mt-[5rem] w-full shadow-2xl shadow-purple-500 lg:w-1/2 overflow-visible">
       <pre data-prefix="$">
@@ -16,11 +26,13 @@ const MoukUp = () => {
         className="text-success">
         <input
           type="text"
+          value={url}
+          onChange={(e) => handleChange(e, setUrl)}
           placeholder="Put the video's link here..."
           className="input input-bordered w-full max-w-xs"
         />
       </pre>
-      <button className="btn flex flex-row gap-2 justify-center items-center shadow-xl shadow-purple-800 absolute right-0 -bottom-8 md:-bottom-5 " >
+      <button onClick={()=>handleSubmit(url)} className="btn flex flex-row gap-2 justify-center items-center shadow-xl shadow-purple-800 absolute right-0 -bottom-8 md:-bottom-5 " >
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
