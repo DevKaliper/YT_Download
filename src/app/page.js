@@ -2,8 +2,14 @@
 "use client"
 import ContactMe from "@/components/ContactMe";
 import MoukUp from "@/components/MoukUp";
+import VideoCard from "@/components/VideoCard";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [data, setData] = useState(""); // ESTADO QUE GUARDA LA DATA DE LA API
+  useEffect(() =>{
+    setData("")
+  }, []) // USEEFFECT QUE SE EJECUTA CUANDO EL ESTADO DATA CAMBIA (CUANDO SE GUARDA LA DATA DE LA API 
 
   return (
     <main className="" >
@@ -15,8 +21,12 @@ export default function Home() {
     <p className="text-white text-center mt-4 text-lg italic 2xl:text-2xl">
       You can download any video from YouTube for free and 100% safe. With no ads. 
     </p>
-    <MoukUp />
-    <ContactMe />
+    <MoukUp setData={setData}/>
+
+    {
+      data ?  <VideoCard/> : <ContactMe />
+     
+    }
    
 
 

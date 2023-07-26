@@ -1,14 +1,19 @@
 "use client";
 import Link from "next/link";
 
+
+
+
+
+
 export default function Home({ loading }) {
   if (loading) {
     return (
       <div className="grid h-screen w-screen place-items-center">
         <div className="grid place-items-center">
           <h1 className="text-5xl">
-            Epa, no tienes nada que descargar... vuelve al home y descarga algo
-            tilín.
+            HOLAAAAAAAAAAAAAA PRONTO SEGUIRÉ DESARROLLANDO LA PAGINA EXTERNA PARA DESCARGAR VIDEOS DE YOUTUBE
+            
           </h1>
           <Link
             className="btn mx-auto my-5"

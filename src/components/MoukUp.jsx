@@ -1,15 +1,26 @@
 import { useState } from "react";
 import service from "../services/fetchVideo";
 
-const MoukUp = () => {
-  const [url, setUrl] = useState("");
-  const handleChange = (e, setSomething) => {
+const MoukUp = ({ setData}) => {
+  
+
+  const [url, setUrl] = useState(""); // ESTADO QUE GUARDA EL LINK
+
+
+
+  const handleChange = (e, setSomething) => { // FUNCION QUE CAMBIA EL ESTADO DEL LINK
     setSomething(e.target.value);
   };
-  const handleSubmit = (url) => {
-    service.fetchVideo(url).then((res) => console.log(res.videoDetails.title));
+
+
+  const handleSubmit = (url) => { // FUNCION QUE ENVIA EL LINK A LA API
+    service.fetchVideo(url).then((res) => {setData(res.videoDetails)
+
+    
+    });
   };
   return (
+
     <div className="mockup-code relative mt-[5rem] w-full overflow-visible shadow-2xl shadow-purple-500 lg:w-1/2">
       <pre data-prefix="$">
         <code>Paste your link down below</code>
