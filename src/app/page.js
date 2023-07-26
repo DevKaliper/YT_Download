@@ -5,6 +5,7 @@ import MoukUp from "@/components/MoukUp";
 import VideoCard from "@/components/VideoCard";
 import { useState, useEffect } from "react";
 
+
 export default function Home() {
   const [data, setData] = useState(""); // ESTADO QUE GUARDA LA DATA DE LA API
   useEffect(() =>{
@@ -24,7 +25,7 @@ export default function Home() {
     <MoukUp setData={setData}/>
 
     {
-      data ?  <VideoCard/> : <ContactMe />
+      data ?  <VideoCard data={data}/> : <ContactMe />
      
     }
    
