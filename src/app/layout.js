@@ -18,10 +18,13 @@ export default function RootLayout({ children }) {
     <html lang="es">
       <Head>
         <title>Free YT Downloader</title>
+        <meta name="description" content="Free YT Downloader" />
+        <link rel="icon" href="https://i.ibb.co/9Ygmtg9/icon.png" />
       </Head>
-      
+
+    
       <body className="bg-[#050211] " >
-        <Ball />
+        <Ball /> {/* cursor */}
       <Header />
         
         {children}

@@ -1,43 +1,41 @@
 import React from "react";
 import { closeSnackbar, enqueueSnackbar } from "notistack";
 function VideoCard({ data }) {
-  const handleDownload = () => {
-    const datas = {
+  const handleDownload = () => { // FUNCION QUE MANEJA CUANDO SE SOLICITA LA DESCARGA
+    const datas = { // DATOS QUE SE ENVIAN A LA API
       url: data?.video_url,
-      fileName: "video_descargado",
+      fileName: "video_descargado", // NOMBRE DEL ARCHIVO (POR DEFECTO) DESPUES AGREGARÉ LA OPCIÓN PARA QUE EL USUARIO PUEDA CAMBIARLO
     };
-    enqueueSnackbar("Intentando descargar el video...", {
+    enqueueSnackbar("Intentando descargar el video...", { // NOTIFICACIÓN DE QUE SE ESTÁ INTENTANDO DESCARGAR EL VIDEO
       persist: true,
       variant: "success",
     });
 
-    fetch("http://localhost:5000/download", {
+    fetch("http://localhost:5000/download", { // PETICIÓN A LA API
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(datas),
     })
-      .then((response) => {
-        closeSnackbar();
-        console.log(response.blob);
+      .then((response) => { // RESPUESTA DE LA API
+        closeSnackbar(); // CERRAR LA NOTIFICACIÓN
 
-        // Generar la descarga en el navegador
+        // GENERAR EL ARCHIVO Y DESCARGARLO EN EL NAVEGADOR
         response.blob().then((blob) => {
-          console.log(blob);
           const url = window.URL.createObjectURL(new Blob([blob]));
           const a = document.createElement("a");
           a.href = url;
-          a.download = `${data?.title}.mp4`;
+          a.download = `${data?.title}.mp4`; // NOMBRE DEL ARCHIVO (TITULO DEL VIDEO)
           a.click();
         });
       })
-      .catch((error) => {
-        enqueueSnackbar(`Error al descargar el video: ${error.message}`, {
+      .catch((error) => { // ERROR AL DESCARGAR EL VIDEO
+        enqueueSnackbar(`Error al descargar el video: ${error.message}`, { // NOTIFICACIÓN DE ERROR
           autoHideDuration: 3000,
           variant: "error",
         });
-        console.error("Error al realizar la solicitud:", error);
+        console.error("Error al realizar la solicitud:", error); // IMPRIMIR EL ERROR EN CONSOLA
       });
   };
   return (

@@ -13,10 +13,10 @@ export default function Home() {
   const [loading, setLoading] = useState(false); // ESTADO QUE GUARDA EL LOADING DE LA API
   useEffect(() =>{
     setData("")
-  }, []) // USEEFFECT QUE SE EJECUTA CUANDO EL ESTADO DATA CAMBIA (CUANDO SE GUARDA LA DATA DE LA API 
+  }, []) // LIMPIA EL ESTADO DE LA DATA CUANDO SE CARGA LA PAGINA
 
   return (
-    <SnackbarProvider maxSnack={3}>
+    <SnackbarProvider maxSnack={3}> 
     <main className="" >
 <section>
   <div className="flex flex-col items-center min-h-full py-2 px-2 overflow-hidden">
@@ -29,12 +29,12 @@ export default function Home() {
     <MoukUp setData={setData} setLoading={setLoading}/>
 
     {
-      loading ? <LoadingVideo/> : ""
+      loading ? <LoadingVideo/> : "" // SI ESTA CARGANDO MUESTRA EL LOADING
     }
 
     {
       
-      data && loading==false ?  <VideoCard data={data}/> : <ContactMe />
+      data && loading==false ?  <VideoCard data={data}/> : <ContactMe /> // SI HAY DATA Y NO ESTA CARGANDO MUESTRA EL VIDEOCARD, SI NO MUESTRA EL CONTACTME
      
     }
    
