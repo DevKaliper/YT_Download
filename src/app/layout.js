@@ -1,7 +1,7 @@
 
 "use client"
 import './globals.css'
-import { SnackbarProvider } from 'notistack'
+
 
 import Header from '@/components/header'
 import Footer from '@/components/footer'

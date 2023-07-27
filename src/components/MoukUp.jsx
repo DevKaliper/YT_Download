@@ -1,7 +1,7 @@
 import { useState } from "react";
 import service from "../services/fetchVideo";
 import { enqueueSnackbar } from "notistack";
-import { set } from "mongoose";
+
 
 const MoukUp = ({ setData, setLoading }) => {
   const [url, setUrl] = useState(""); // ESTADO QUE GUARDA EL LINK
