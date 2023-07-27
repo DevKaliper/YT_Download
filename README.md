@@ -23,6 +23,13 @@ No additional software is required to use this YouTube video downloader. The ent
 
 *Figure 2: Search results and download option*
 
+
+### Things to Do
+
+- [ ] Allow users to choose between video or audio download.
+- [ ] Provide options for users to select the quality of the video.
+- [ ] Develop a desktop application for easier access and usage.
+
 ### Contributions
 
 Contributions are welcome! If you wish to improve this project, please submit your suggestions or corrections through a pull request. We appreciate your contributions to make this tool even better.
