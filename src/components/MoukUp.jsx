@@ -1,8 +1,9 @@
 import { useState } from "react";
 import service from "../services/fetchVideo";
 import { enqueueSnackbar } from "notistack";
+import { set } from "mongoose";
 
-const MoukUp = ({ setData }) => {
+const MoukUp = ({ setData, setLoading }) => {
   const [url, setUrl] = useState(""); // ESTADO QUE GUARDA EL LINK
 
   const handleChange = (e, setSomething) => {
@@ -12,11 +13,14 @@ const MoukUp = ({ setData }) => {
 
   const handleSubmit = (url) => {
     // FUNCION QUE ENVIA EL LINK A LA API
+    setLoading(true);
     service.fetchVideo(url).then((res) => {
       setData(res.videoDetails);
+      setLoading(false);
       console.log("respuesta impresa desde el cliente: ",res)
       
     }).catch((err) => {
+      setLoading(false);
       enqueueSnackbar(err.message, { autoHideDuration: 3000,
         variant: "error",})
       console.log("error desde el cliente: ",err.message);
