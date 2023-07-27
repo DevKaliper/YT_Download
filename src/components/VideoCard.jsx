@@ -11,7 +11,7 @@ function VideoCard({ data }) {
       variant: "success",
     });
 
-    fetch("http://localhost:5000/download", { // PETICIÓN A LA API
+    fetch("https://yt-downloader-backend-x7xx.onrender.com/download", { // PETICIÓN A LA API
       method: "POST",
       headers: {
         "Content-Type": "application/json",
