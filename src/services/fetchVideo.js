@@ -1,5 +1,5 @@
 const fetchVideo = (url) => {
-  return fetch("http://localhost:5000/infoVideo", {
+  return fetch("https://yt-downloader-backend-x7xx.onrender.com/infoVideo", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -23,7 +23,7 @@ const fetchVideo = (url) => {
 };
 
 const downloadVideo = (url) => {
-  return fetch("http://localhost:5000/download", {
+  return fetch("https://yt-downloader-backend-x7xx.onrender.com/download", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
