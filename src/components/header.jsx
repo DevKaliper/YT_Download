@@ -2,7 +2,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <nav className="sticky left-0 top-0 ">
+    <nav className="sticky left-0 z-[999999] top-0 ">
       <div className="  mx-auto mt-5 flex  h-[4rem] w-full items-center justify-between rounded-3xl bg-[#120d26] px-8 py-4 text-white backdrop-blur md:w-[65%]">
         <div className="ml-2 flex items-center justify-center gap-3 ">
           <svg

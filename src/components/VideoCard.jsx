@@ -42,10 +42,10 @@ function VideoCard({ data }) {
   };
   return (
     <div className="min-w-screen my-5 grid min-h-[70vh]  place-items-center ">
-      <div className="card mx-auto h-auto w-96 bg-purple-950 bg-opacity-75 shadow-2xl shadow-purple-800">
+      <div className="card mx-auto h-auto w-96  bg-opacity-75 shadow-2xl hover:scale-105 duration-200 ease-in-out shadow-purple-800">
         <figure className="mt-5 ">
           <img
-            className="rounded-xl shadow-lg"
+            className="rounded-xl shadow-lg shadow-white"
             src={data?.thumbnails[0]?.url}
             width={250}
             alt="video thumbnail"
