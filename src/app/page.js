@@ -3,6 +3,7 @@
 import ContactMe from "@/components/ContactMe";
 import MoukUp from "@/components/MoukUp";
 import VideoCard from "@/components/VideoCard";
+import { SnackbarProvider } from "notistack";
 import { useState, useEffect } from "react";
 
 
@@ -13,6 +14,7 @@ export default function Home() {
   }, []) // USEEFFECT QUE SE EJECUTA CUANDO EL ESTADO DATA CAMBIA (CUANDO SE GUARDA LA DATA DE LA API 
 
   return (
+    <SnackbarProvider maxSnack={3}>
     <main className="" >
 <section>
   <div className="flex flex-col items-center min-h-full py-2 px-2 overflow-hidden">
@@ -48,5 +50,6 @@ export default function Home() {
 
 </section>
     </main>
+    </SnackbarProvider>
   )
 }

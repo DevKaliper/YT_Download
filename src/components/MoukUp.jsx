@@ -1,5 +1,6 @@
 import { useState } from "react";
 import service from "../services/fetchVideo";
+import { enqueueSnackbar } from "notistack";
 
 const MoukUp = ({ setData }) => {
   const [url, setUrl] = useState(""); // ESTADO QUE GUARDA EL LINK
@@ -13,8 +14,15 @@ const MoukUp = ({ setData }) => {
     // FUNCION QUE ENVIA EL LINK A LA API
     service.fetchVideo(url).then((res) => {
       setData(res.videoDetails);
-      console.log(res.videoDetails)
-    });
+      console.log("respuesta impresa desde el cliente: ",res)
+      
+    }).catch((err) => {
+      enqueueSnackbar(err.message, { autoHideDuration: 3000,
+        variant: "error",})
+      console.log("error desde el cliente: ",err.message);
+    }
+    );
+
   };
   return (
     <div className="mockup-code relative mt-[5rem] w-full overflow-visible shadow-2xl shadow-purple-500 lg:w-1/2">
