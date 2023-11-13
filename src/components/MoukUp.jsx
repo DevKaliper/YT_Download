@@ -36,7 +36,7 @@ const MoukUp = ({ setData, setLoading }) => {
       <pre
         data-prefix=">"
         className="mb-2 text-warning">
-        <code>We aceppt youtube and tiktok videos</code>
+        <code>We accept any kind of videos</code>
       </pre>
       <pre
         data-prefix=">"
