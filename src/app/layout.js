@@ -1,5 +1,4 @@
 
-"use client"
 import './globals.css'
 
 
@@ -19,7 +18,7 @@ export default function RootLayout({ children }) {
       <Head>
         <title>Free YT Downloader</title>
         <meta name="description" content="Free YT Downloader" />
-        <link rel="icon" href="https://i.ibb.co/9Ygmtg9/icon.png" />
+        
       </Head>
 
     
