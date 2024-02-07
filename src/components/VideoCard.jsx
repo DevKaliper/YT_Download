@@ -57,7 +57,9 @@ function VideoCard({ data }) {
           <p className="overflow-hidden">
             {" "}
             <strong className="text-lg  text-purple-400">Description: </strong>
-            {data?.description}
+            {data?.description.length > 100
+              ? `${data?.description.slice(0, 100)}...`
+              : data?.description}
           </p>
           <div className="card-actions justify-end">
             <button
