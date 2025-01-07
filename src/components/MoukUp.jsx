@@ -1,9 +1,10 @@
 import { useState } from "react";
 import service from "../services/fetchVideo";
-import { enqueueSnackbar } from "notistack";
-
+import { useToast } from "@/hooks/use-toast";
 
 const MoukUp = ({ setData, setLoading }) => {
+  const { toast } = useToast();
+
   const [url, setUrl] = useState(""); // ESTADO QUE GUARDA EL LINK
 
   const handleChange = (e, setSomething) => {
@@ -13,20 +14,30 @@ const MoukUp = ({ setData, setLoading }) => {
 
   const handleSubmit = (url) => {
     // FUNCION QUE ENVIA EL LINK A LA API
-    setLoading(true);
-    service.fetchVideo(url).then((res) => {
-      setData(res.videoDetails);
-      setLoading(false);
-      console.log("respuesta impresa desde el cliente: ",res)
-      
-    }).catch((err) => {
-      setLoading(false);
-      enqueueSnackbar(err.message, { autoHideDuration: 3000,
-        variant: "error",})
-      console.log("error desde el cliente: ",err.message);
+    if (!url) {
+      toast({
+        title: "Error",
+        variant: "destructive",
+        description: "Please paste a link",
+      });
+      return;
     }
-    );
 
+    setLoading(true);
+    service
+      .fetchVideo(url)
+      .then((res) => {
+        setData(res);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        toast({
+          title: "Error",
+          variant: "destructive",
+          description: err.message,
+        });
+      });
   };
   return (
     <div className="mockup-code relative mt-[5rem] w-full overflow-visible shadow-2xl shadow-purple-500 lg:w-1/2">
@@ -36,7 +47,7 @@ const MoukUp = ({ setData, setLoading }) => {
       <pre
         data-prefix=">"
         className="mb-2 text-warning">
-        <code>We accept any kind of videos</code>
+        <code>We accept all types of videos</code>
       </pre>
       <pre
         data-prefix=">"
@@ -45,7 +56,7 @@ const MoukUp = ({ setData, setLoading }) => {
           type="text"
           value={url}
           onChange={(e) => handleChange(e, setUrl)}
-          placeholder="Put the video's link here..."
+          placeholder="Paste the link here..."
           className="input input-bordered w-full max-w-xs"
         />
       </pre>

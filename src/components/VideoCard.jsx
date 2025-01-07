@@ -1,25 +1,34 @@
 import React from "react";
-import { closeSnackbar, enqueueSnackbar } from "notistack";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge"
+
 function VideoCard({ data }) {
-  const handleDownload = () => { // FUNCION QUE MANEJA CUANDO SE SOLICITA LA DESCARGA
-    const datas = { // DATOS QUE SE ENVIAN A LA API
+  const handleDownload = () => {
+    // FUNCION QUE MANEJA CUANDO SE SOLICITA LA DESCARGA
+    const datas = {
+      // DATOS QUE SE ENVIAN A LA API
       url: data?.video_url,
       fileName: "video_descargado", // NOMBRE DEL ARCHIVO (POR DEFECTO) DESPUES AGREGARÉ LA OPCIÓN PARA QUE EL USUARIO PUEDA CAMBIARLO
     };
-    enqueueSnackbar("Intentando descargar el video...", { // NOTIFICACIÓN DE QUE SE ESTÁ INTENTANDO DESCARGAR EL VIDEO
-      persist: true,
-      variant: "success",
-    });
 
-    fetch("https://yt-downloader-backend-x7xx.onrender.com/download", { // PETICIÓN A LA API
+    fetch("http://localhost:5000/download", {
+      // PETICIÓN A LA API
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(datas),
     })
-      .then((response) => { // RESPUESTA DE LA API
-        closeSnackbar(); // CERRAR LA NOTIFICACIÓN
+      .then((response) => {
+        // RESPUESTA DE LA API
+        // // CERRAR LA NOTIFICACIÓN
 
         // GENERAR EL ARCHIVO Y DESCARGARLO EN EL NAVEGADOR
         response.blob().then((blob) => {
@@ -30,36 +39,34 @@ function VideoCard({ data }) {
           a.click();
         });
       })
-      .catch((error) => { // ERROR AL DESCARGAR EL VIDEO
-        enqueueSnackbar(`Error al descargar el video: ${error.message}`, { // NOTIFICACIÓN DE ERROR
-          autoHideDuration: 3000,
-          variant: "error",
-        });
+      .catch((error) => {
+        // ERROR AL DESCARGAR EL VIDEO
         console.error("Error al realizar la solicitud:", error); // IMPRIMIR EL ERROR EN CONSOLA
       });
   };
   return (
     <div className="min-w-screen my-5 grid min-h-[70vh]  place-items-center ">
-      <div className="card mx-auto h-auto w-96  bg-opacity-75 shadow-2xl hover:scale-105 duration-200 ease-in-out shadow-purple-800">
-        <figure className="mt-5 ">
+      <Card className="bg-[#2A323C] text-white shadow-2xl shadow-purple-400 p-4 border-none flex justify-center items-center flex-col">
+        <CardHeader>
+          <CardTitle>{data?.title}</CardTitle>
+          <CardDescription>by {data?.author?.user}</CardDescription>
+        </CardHeader>
+        <CardContent>
+        <figure className="my-5 self-center ">
           <img
-            className="rounded-xl shadow-lg shadow-white"
+            className="rounded-xl border border-white"
             src={data?.thumbnails[0]?.url}
             width={250}
             alt="video thumbnail"
           />
         </figure>
-        <div className="card-body">
           <h2 className="card-title  text-purple-200">
-            {data?.title}
-            <div className="badge badge-secondary">{data?.category}</div>
+          <Badge className="bg-purple-400">Category: {data?.category}</Badge>
+          <Badge className="bg-red-400">Likes: {data?.likes}</Badge>
           </h2>
-          <p className="overflow-hidden">
-            {" "}
-            <strong className="text-lg  text-purple-400">Description: </strong>
-            {data?.description}
-          </p>
-          <div className="card-actions justify-end">
+        </CardContent>
+        <CardFooter>
+        <div className="card-actions justify-end">
             <button
               className="btn my-5 hover:bg-purple-700 flex bg-base gap-3 justify-center items-center shadow-lg shadow-gray-700"
               onClick={handleDownload}>
@@ -80,8 +87,8 @@ function VideoCard({ data }) {
               <span>Download with highest quality</span>
             </button>
           </div>
-        </div>
-      </div>
+        </CardFooter>
+      </Card>
     </div>
   );
 }
