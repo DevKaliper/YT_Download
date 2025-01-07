@@ -18,7 +18,7 @@ function VideoCard({ data }) {
       fileName: "video_descargado", // NOMBRE DEL ARCHIVO (POR DEFECTO) DESPUES AGREGARÉ LA OPCIÓN PARA QUE EL USUARIO PUEDA CAMBIARLO
     };
 
-    fetch("http://localhost:5000/download", {
+    fetch("https://yt-downloader-backend-x7xx.onrender.com/download", {
       // PETICIÓN A LA API
       method: "POST",
       headers: {

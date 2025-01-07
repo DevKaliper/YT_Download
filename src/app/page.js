@@ -4,6 +4,8 @@ import LoadingVideo from "@/components/LoadingVideo";
 import MoukUp from "@/components/MoukUp";
 import VideoCard from "@/components/VideoCard";
 import { useState, useEffect } from "react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Terminal } from "lucide-react";
 
 export default function Home() {
   const [data, setData] = useState(""); // ESTADO QUE GUARDA LA DATA DE LA API
@@ -28,6 +30,14 @@ export default function Home() {
             You can download any video from YouTube for free and 100% safe. With
             no ads.
           </p>
+          <Alert className="w-1/5 mt-5 bg-yellow-400 border-none">
+            <Terminal className="h-4 w-4" />
+            <AlertTitle>Warning!</AlertTitle>
+            <AlertDescription>
+              Temporary disabled due to maintenance, we will be back soon.
+            </AlertDescription>
+          </Alert>
+
           <MoukUp
             setData={setData}
             setLoading={setLoading}

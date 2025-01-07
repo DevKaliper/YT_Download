@@ -1,5 +1,5 @@
 const fetchVideo = async (url) => {
-  let response = await fetch("http://localhost:5000/infoVideo", {
+  let response = await fetch("https://yt-downloader-backend-x7xx.onrender.com/infoVideo", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -16,7 +16,7 @@ const fetchVideo = async (url) => {
 }
 
 const downloadVideo = (url) => {
-  return fetch("http://localhost:5000/download", {
+  return fetch("https://yt-downloader-backend-x7xx.onrender.com/download", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
